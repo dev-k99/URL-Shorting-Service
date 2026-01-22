@@ -4,9 +4,7 @@ import dotenv from 'dotenv';
 import urlRoutes from './routes/urls.js';
 import { redirectToOriginal } from './controllers/urlController.js';
 
-require('dotenv').config();
-
-// Load environment variables
+// Load environment variables ONCE
 dotenv.config();
 
 const app = express();
@@ -14,7 +12,9 @@ const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:3000'],
+  origin: process.env.NODE_ENV === 'production' 
+    ? process.env.FRONTEND_URL 
+    : ['http://localhost:5173', 'http://localhost:3000'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type']
 }));
@@ -45,5 +45,5 @@ app.use((err, req, res, next) => {
 // Start server
 app.listen(PORT, () => {
   console.log(`🚀 URL Shortener API running on http://localhost:${PORT}`);
-  console.log(`📝 API endpoints available at http://localhost:${PORT}/api`);
+  console.log(`📋 API endpoints available at http://localhost:${PORT}/api`);
 });
