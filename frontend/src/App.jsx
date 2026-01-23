@@ -3,7 +3,9 @@ import UrlForm from './components/UrlForm';
 import UrlList from './components/UrlList';
 import UrlStats from './components/UrlStats';
 
-const API_BASE = '/api';
+const API_BASE = import.meta.env.VITE_API_URL 
+  ? `${import.meta.env.VITE_API_URL}/api`
+  : 'http://localhost:3001/api';
 
 function App() {
   const [urls, setUrls] = useState([]);
