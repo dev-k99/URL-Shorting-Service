@@ -2,6 +2,11 @@
 
 A full-stack URL shortening service with a RESTful API and React frontend. Create short, memorable links and track their usage statistics.
 
+[Live Demo](https://url-shorting-service.vercel.app/)
+
+##Screenshot
+![Live Screenshot](Screenshot.png)
+
 ## Features
 
 - ✅ Create short URLs from long URLs
